@@ -16,6 +16,8 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     Stage window;
     Scene addingEvent;
+    Scene eventList;
+
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -38,8 +40,8 @@ public class HelloApplication extends Application {
 
         window = stage;
         VBox layout = new VBox();
-        addingEvent = new Scene(layout, 800, 600);
-        window.setScene(addingEvent);
+        eventList = new Scene(layout, 800, 600);
+        window.setScene(eventList);
         window.setTitle("Event List");
         window.show();
     }
