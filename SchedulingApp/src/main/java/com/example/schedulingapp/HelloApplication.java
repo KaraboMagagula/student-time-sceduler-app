@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
     Stage window;
-    Scene addingEvent;
+   // Scene addingEvent;
     Scene eventList;
 
 
@@ -27,6 +27,10 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         stage.show();*/
         
+
+       
+
+
         /*Hanno's code for setting the stage to the adding event window
         window  = stage;
         AddingEvent event1 = new AddingEvent();
@@ -37,14 +41,21 @@ public class HelloApplication extends Application {
          */
 
 
+
 /* Karabo's code
         window = stage;
-        VBox layout = new VBox();
-        eventList = new Scene(layout, 800, 600);
-        window.setScene(eventList);
+        //VBox layout = new VBox();
+       // eventList = new Scene(layout, 800, 600);
+        EventList eventL = new EventList();
+        eventL.setEventList_GUI();
+        window.setScene(eventL.eventList);
         window.setTitle("Event List");
+
+        window.show(); 
+
         window.show();
         */
+
     }
 
     public static void main(String[] args) {launch();}
