@@ -1,7 +1,7 @@
 package za.ac.cput.sortingevents;
 
 import javafx.scene.control.*;
-
+//Cebisani's
 public class Events {
 
     private String eventName, eventType, dueDate;
