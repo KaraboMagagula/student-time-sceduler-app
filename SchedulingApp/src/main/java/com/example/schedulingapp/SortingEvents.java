@@ -5,10 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -18,8 +15,7 @@ import java.io.*;
 
 public class SortingEvents extends Application {
     Stage window;
-
-    Button sortButton;
+    Button exitButton;
 
     TableView<Events> table;
 
@@ -31,7 +27,7 @@ public class SortingEvents extends Application {
 
         window.setTitle("Sorting Events Scene");
 
-
+        window.setOnCloseRequest(e -> closeApp());
 
 
 //Setting up the table and Columns
@@ -59,30 +55,52 @@ public class SortingEvents extends Application {
         table.setItems(getEvents());
         table.getColumns().addAll(eventNameColumn,eventTypeColumn,eventDateColumn,eventPriorityColumn);
 
-/////// Adding a button
+/////// Adding
 
-        sortButton = new Button("Sort By");
-        //sortButton.setAlignment(Pos.CENTER_LEFT);
-        sortButton.setMinHeight(50);
+        Menu sortMenu = new Menu("Sort By:");
+
+////Menu Items
+
+        sortMenu.getItems().add(new MenuItem("Ascending Order"));
+        sortMenu.getItems().add(new MenuItem("Descending Order"));
+        sortMenu.getItems().add(new MenuItem("Due Date"));
+        sortMenu.getItems().add(new MenuItem("Event Name"));
+        sortMenu.getItems().add(new MenuItem("Event Type"));
+
+/////MenuBar
+
+        MenuBar menuBar = new MenuBar();
+        menuBar.getMenus().addAll(sortMenu);
+
+
+/////Exit Button
+        exitButton = new Button("Exit");
+        exitButton.setOnAction(e -> closeApp());
 
 
 ///////Setting up the VBox
 
         VBox vBox = new VBox();
-        vBox.getChildren().addAll(table,sortButton);
-
-        //Scene scene = new Scene(vBox,800, 600);
-        Scene scene = new Scene(vBox);
+        vBox.getChildren().addAll(table,menuBar,exitButton);
+////
+        Scene scene = new Scene(vBox,700, 400);
         window.setScene(scene);
         window.show();
 
 
     }
+/////Closing App Method
+    public void closeApp(){
+        Boolean result = ConfirmBox.display("Close Application", "Do you want to exit ?");
+        if(result)
+            window.close();
+    }
 
-//Calling the Events Class
+
+    //Calling the Events Class
     public ObservableList<Events> getEvents(){
         ObservableList<Events> events = FXCollections.observableArrayList();
-        events.add(new Events("Applications Development Practice","Test","21-06-22", new CheckBox()));
+        events.add(new Events("Applications Development Practice","Test","21-06-22", new CheckBox() ));
         events.add(new Events("Information Management","LinkedIn","29-05-22",new CheckBox()));
         events.add(new Events("Information systems","Exam","09-06-22",new CheckBox()));
         events.add(new Events("Multimedia Applications Fundamentals","Study","09-06-22",new CheckBox()));
