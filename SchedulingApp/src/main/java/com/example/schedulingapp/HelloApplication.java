@@ -27,17 +27,22 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         stage.show();*/
         
-        //Hanno's adding event scene. Do not edit
-       /* window = stage;
-        VBox layout1 = new VBox();
-        addingEvent = new Scene(layout1, 800, 600);
-        window.setScene(addingEvent);
-        window.setTitle("Adding new Event"); */
-        //window.show();
-        //end of scene
+
+       
+
+
+        /*Hanno's code for setting the stage to the adding event window
+        window  = stage;
+        AddingEvent event1 = new AddingEvent();
+        event1.setAddingEvent_GUI();
+        window.setScene(event1.addingEvent);
+        window.setTitle(event1.getTitle());
+        window.show();
+         */
 
 
 
+/* Karabo's code
         window = stage;
         //VBox layout = new VBox();
        // eventList = new Scene(layout, 800, 600);
@@ -45,7 +50,12 @@ public class HelloApplication extends Application {
         eventL.setEventList_GUI();
         window.setScene(eventL.eventList);
         window.setTitle("Event List");
+
         window.show(); 
+
+        window.show();
+        */
+
     }
 
     public static void main(String[] args) {launch();}
